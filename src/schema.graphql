@@ -18,6 +18,10 @@ type Query {
   #pediactrics
   getAllPediatrics: [BaseEntity]
   getOnePediatrics (id: ID!): BaseEntity
+
+  #psychiatry
+  getAllPsychiatry: [BaseEntity]
+  getOnePsychiatry (id: ID!): BaseEntity
 }
 
 type Mutation {
@@ -45,6 +49,11 @@ type Mutation {
   createPediatrics (dto: CreateBaseRequest!): BaseEntity!
   updatePediatrics (id: ID!, dto: UpdateBaseRequest!): String 
   deletePediatrics (id: ID!): String
+
+  #psychiatry
+  createPsychiatry (dto: CreateBaseRequest!): BaseEntity!
+  updatePsychiatry (id: ID!, dto: UpdateBaseRequest!): String 
+  deletePsychiatry (id: ID!): String
 }
 
 type BaseEntity {

@@ -27,6 +27,7 @@ import {
   updateOptometry,
 } from "./Optometry.resolvers";
 import { createPediatrics, deletePediatrics, getAllPediatrics, getOnePediatrics, updatePediatrics } from "./Pediatrics.resolvers";
+import { createPsychiatry, deletePsychiatry, getAllPsychiatry, getOnePsychiatry, updatePsychiatry } from "./Psychiatry.resolvers";
 
 export const resolvers = {
   Query: {
@@ -39,7 +40,9 @@ export const resolvers = {
     getAllOptometry,
     getOneOptometry,
     getAllPediatrics,
-    getOnePediatrics
+    getOnePediatrics,
+    getAllPsychiatry,
+    getOnePsychiatry
   },
   Mutation: {
     createGeneralMedicine,
@@ -56,6 +59,9 @@ export const resolvers = {
     deleteOptometry,
     createPediatrics,
     updatePediatrics,
-    deletePediatrics
+    deletePediatrics,
+    createPsychiatry,
+    updatePsychiatry,
+    deletePsychiatry
   },
 };
