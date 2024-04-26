@@ -26,8 +26,27 @@ import {
   getOneOptometry,
   updateOptometry,
 } from "./Optometry.resolvers";
-import { createPediatrics, deletePediatrics, getAllPediatrics, getOnePediatrics, updatePediatrics } from "./Pediatrics.resolvers";
-import { createPsychiatry, deletePsychiatry, getAllPsychiatry, getOnePsychiatry, updatePsychiatry } from "./Psychiatry.resolvers";
+import {
+  createPediatrics,
+  deletePediatrics,
+  getAllPediatrics,
+  getOnePediatrics,
+  updatePediatrics,
+} from "./Pediatrics.resolvers";
+import {
+  createPsychiatry,
+  deletePsychiatry,
+  getAllPsychiatry,
+  getOnePsychiatry,
+  updatePsychiatry,
+} from "./Psychiatry.resolvers";
+import {
+  createUsers,
+  deleteUsers,
+  getAllUsers,
+  getOneUser,
+  updateUsers,
+} from "./User.resolvers";
 
 export const resolvers = {
   Query: {
@@ -42,7 +61,9 @@ export const resolvers = {
     getAllPediatrics,
     getOnePediatrics,
     getAllPsychiatry,
-    getOnePsychiatry
+    getOnePsychiatry,
+    getAllUsers,
+    getOneUser,
   },
   Mutation: {
     createGeneralMedicine,
@@ -62,6 +83,9 @@ export const resolvers = {
     deletePediatrics,
     createPsychiatry,
     updatePsychiatry,
-    deletePsychiatry
+    deletePsychiatry,
+    createUsers,
+    updateUsers,
+    deleteUsers,
   },
 };

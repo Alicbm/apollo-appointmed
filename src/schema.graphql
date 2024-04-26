@@ -22,6 +22,10 @@ type Query {
   #psychiatry
   getAllPsychiatry: [BaseEntity]
   getOnePsychiatry (id: ID!): BaseEntity
+
+  #user
+  getAllUsers: [UserEntity]
+  getOneUser (id: ID!): UserEntity
 }
 
 type Mutation {
@@ -54,6 +58,11 @@ type Mutation {
   createPsychiatry (dto: CreateBaseRequest!): BaseEntity!
   updatePsychiatry (id: ID!, dto: UpdateBaseRequest!): String 
   deletePsychiatry (id: ID!): String
+
+  #user
+  createUsers (dto: CreateUserRequest!): UserEntity!
+  updateUsers (id: ID!, dto: UpdateUserRequest!): String 
+  deleteUsers (id: ID!): String
 }
 
 type BaseEntity {
@@ -72,6 +81,15 @@ type BaseEntity {
   doctor: String!,
   patientStatus: String!,
   status: String!,
+}
+
+type UserEntity {
+  id: ID!,
+  name: String!,
+  email: String!,
+  password: String!,
+  createdAt: String!,
+  role: String!,
 }
 
 input CreateBaseRequest {
@@ -106,4 +124,20 @@ input UpdateBaseRequest {
   doctor: String,
   patientStatus: String,
   status: String,
+}
+
+input CreateUserRequest {
+  name: String!,
+  email: String!,
+  password: String!,
+  createdAt: String!,
+  role: String!,
+}
+
+input UpdateUserRequest {
+  name: String,
+  email: String,
+  password: String,
+  createdAt: String,
+  role: String,
 }
