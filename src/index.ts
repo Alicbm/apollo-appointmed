@@ -5,6 +5,7 @@ import { resolvers }  from "./resolvers"
 import { loadFiles } from '@graphql-tools/load-files'
 import { connectDB } from "./db"
 import "reflect-metadata"
+import './utils/auth'
 
 const express = require('express')
 
@@ -17,7 +18,7 @@ app.use(express.json());
     typeDefs: await loadFiles('./src/**/*.graphql'),
     resolvers,
   });
-  
+
   connectDB
   await server.start();
   
@@ -31,7 +32,6 @@ app.use(express.json());
     }),
   );
 
-  
   app.listen(3000, () => {
     console.log(`Mi port 3000`);
   });

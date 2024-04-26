@@ -1,3 +1,4 @@
+import bcrypt from 'bcrypt'
 import { CreateUserRequest, findOne, UpdateUserRequest } from "../../types";
 import { UserEntity } from "../entities/User.entity";
 import { connectDB } from "../db";
@@ -17,7 +18,12 @@ export const getOneUser = async (_, { id }: findOne) => {
 };
 
 export const createUsers = async (_, { dto }: CreateUserRequest) => {
-  const data = await userSource.insert(dto);
+  const hash = await bcrypt.hash(dto.password, 10);
+  
+  const data = await userSource.insert({
+    ...dto,
+    password: hash
+  });
 
   return {
     id: data.identifiers[0].id,

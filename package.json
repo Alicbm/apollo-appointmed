@@ -13,7 +13,9 @@
   "dependencies": {
     "@apollo/server": "^4.10.4",
     "@graphql-tools/load-files": "^7.0.0",
+    "@hapi/boom": "^10.0.1",
     "@types/node": "^20.12.7",
+    "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
     "express": "^4.19.2",
     "graphql": "^16.8.1",
@@ -21,6 +23,7 @@
     "graphql-scalars": "^1.23.0",
     "jsonwebtoken": "^9.0.2",
     "mysql": "^2.18.1",
+    "passport-jwt": "^4.0.1",
     "reflect-metadata": "^0.2.2",
     "typeorm": "^0.3.20",
     "typescript": "^5.4.5"

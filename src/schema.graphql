@@ -29,6 +29,9 @@ type Query {
 }
 
 type Mutation {
+  #login
+  login (email: String!, password: String!): UserEntityAuth
+
   #general medicine
   createGeneralMedicine (dto: CreateBaseRequest!): BaseEntity!
   updateGeneralMedicine (id: ID!, dto: UpdateBaseRequest!): String 
@@ -90,6 +93,11 @@ type UserEntity {
   password: String!,
   createdAt: String!,
   role: String!,
+}
+
+type UserEntityAuth { 
+  user: UserEntity,
+  access_token: String
 }
 
 input CreateBaseRequest {

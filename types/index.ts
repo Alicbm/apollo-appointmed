@@ -17,7 +17,8 @@ export type UpdateUserRequest = {
 }
 
 export type findOne = {
-  id: string
+  id?: string
+  email?: string
 }
 
 type CreateBaseDto = {

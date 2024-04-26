@@ -1,10 +1,15 @@
 import { CreateRequest, findOne, UpdateRequest } from "../../types";
 import { GeneralMedicineEntity } from "../entities/GeneralMedicine.entity";
 import { connectDB } from "../db";
+import { checkJwtGql } from "../utils/auth/checkJwt";
+import { checkRolesGql } from "../utils/auth/checkRoles";
 
 const generalMedicineSource = connectDB.getRepository(GeneralMedicineEntity);
 
-export const getAllGeneralMedicine = async () => {
+export const getAllGeneralMedicine = async (_, args, context) => {
+  const user = await checkJwtGql(context)  
+  checkRolesGql(user, 'admin')
+
   return await generalMedicineSource.find();
 };
 

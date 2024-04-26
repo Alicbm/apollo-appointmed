@@ -1,3 +1,4 @@
+import { login } from "./Auth.resolvers";
 import {
   getOneGeneralMedicine,
   getAllGeneralMedicine,
@@ -66,6 +67,7 @@ export const resolvers = {
     getOneUser,
   },
   Mutation: {
+    login,
     createGeneralMedicine,
     updateGeneralMedicine,
     deleteGeneralMedicine,
