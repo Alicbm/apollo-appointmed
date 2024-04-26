@@ -1,39 +1,34 @@
-// const {
-//   getProduct,
-//   getProducts,
-//   addProduct,
-//   updateProduct,
-//   deleteProduct,
-//   getProductsByCategory
-//  } = require('./product.resolvers')
-
-import { getOneGeneralMedicine, getAllGeneralMedicine, createGeneralMedicine, updateGeneralMedicine, deleteGeneralMedicine } from "./GeneralMedicine.resolvers";
-
-// const { login } = require('./auth.resolvers')
-// const { addCategory, getCategory } = require('./category.resolvers')
+import {
+  getOneGeneralMedicine,
+  getAllGeneralMedicine,
+  createGeneralMedicine,
+  updateGeneralMedicine,
+  deleteGeneralMedicine,
+} from "./GeneralMedicine.resolvers";
+import {
+  createGynecology,
+  deleteGynecology,
+  getAllGynecology,
+  getOneGynecology,
+  updateGynecology,
+} from "./Ginecology.resolvers";
 
 export const resolvers = {
   Query: {
-    hello: () => 'Hola Campeón',
-    getPerson: (_, { name, age}) => `Hola ${name}, tienes ${age} años y eres un campeón`,
+    hello: () => "Hola Campeón",
+    getPerson: (_, { name, age }) =>
+      `Hola ${name}, tienes ${age} años y eres un campeón`,
     getAllGeneralMedicine,
-    getOneGeneralMedicine
-    // product: getProduct,
-    // products: getProducts,
-    // category: getCategory
+    getOneGeneralMedicine,
+    getAllGynecology,
+    getOneGynecology,
   },
-  Mutation : {
+  Mutation: {
     createGeneralMedicine,
     updateGeneralMedicine,
     deleteGeneralMedicine,
-    // login,
-    // addProduct,
-    // updateProduct,
-    // deleteProduct,
-    // addCategory
+    createGynecology,
+    updateGynecology,
+    deleteGynecology,
   },
-  // CategoryNameType,
-  // Category: {
-  //   products: getProductsByCategory
-  // }
-}
+};

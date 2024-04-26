@@ -5,6 +5,10 @@ type Query {
   #general medicine
   getAllGeneralMedicine: [BaseEntity]
   getOneGeneralMedicine (id: ID!): BaseEntity
+
+  #gynecology
+  getAllGynecology: [BaseEntity]
+  getOneGynecology (id: ID!): BaseEntity
 }
 
 type Mutation {
@@ -12,6 +16,11 @@ type Mutation {
   createGeneralMedicine (dto: CreateBaseRequest!): BaseEntity!
   updateGeneralMedicine (id: ID!, dto: UpdateBaseRequest!): String 
   deleteGeneralMedicine (id: ID!): String
+
+  #gynecology
+  createGynecology (dto: CreateBaseRequest!): BaseEntity!
+  updateGynecology (id: ID!, dto: UpdateBaseRequest!): String 
+  deleteGynecology (id: ID!): String
 }
 
 type BaseEntity {

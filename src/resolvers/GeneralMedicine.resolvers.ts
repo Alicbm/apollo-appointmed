@@ -1,6 +1,6 @@
 import { CreateRequest, findOne, UpdateRequest } from "../../types";
-import { connectDB } from "../db";
 import { GeneralMedicineEntity } from "../entities/GeneralMedicine.entity";
+import { connectDB } from "../db";
 
 const generalMedicineSource = connectDB.getRepository(GeneralMedicineEntity);
 
