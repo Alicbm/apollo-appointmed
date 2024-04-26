@@ -10,7 +10,7 @@ type Query {
 type Mutation {
   #general medicine
   createGeneralMedicine (dto: CreateBaseRequest!): BaseEntity!
-  updateGeneralMedicine (id: ID!, dto: CreateBaseRequest!): BaseEntity
+  updateGeneralMedicine (id: ID!, dto: UpdateBaseRequest!): String 
   deleteGeneralMedicine (id: ID!): String
 }
 

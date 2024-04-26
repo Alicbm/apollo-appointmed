@@ -30,14 +30,19 @@ export const createGeneralMedicine = async (_, { dto }: CreateRequest) => {
 };
 
 export const updateGeneralMedicine = async (_, { id, dto }: UpdateRequest) => {
-  const findRequest = await generalMedicineSource.findOne({ where: { id } });
+  let findRequest = await generalMedicineSource.findOne({ where: { id } });
 
   if (!id) {
     return "Id is required";
   }
 
   if (findRequest) {
-    await generalMedicineSource.save(findRequest)
+    findRequest = {
+      ...findRequest,
+      ...dto,
+    };
+
+    await generalMedicineSource.save(findRequest);
     return "Your request update was succesfully";
   }
 
@@ -47,4 +52,4 @@ export const updateGeneralMedicine = async (_, { id, dto }: UpdateRequest) => {
 export const deleteGeneralMedicine = async (_, { id }: findOne) => {
   await generalMedicineSource.delete(id);
   return `Request with id: ${id} deleted succesfully.`;
-}
+};
