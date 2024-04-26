@@ -19,6 +19,13 @@ import {
   getOneOdontology,
   updateOdontology,
 } from "./Odontology.resolvers";
+import {
+  createOptometry,
+  deleteOptometry,
+  getAllOptometry,
+  getOneOptometry,
+  updateOptometry,
+} from "./Optometry.resolvers";
 
 export const resolvers = {
   Query: {
@@ -28,6 +35,8 @@ export const resolvers = {
     getOneGynecology,
     getAllOdontology,
     getOneOdontology,
+    getAllOptometry,
+    getOneOptometry,
   },
   Mutation: {
     createGeneralMedicine,
@@ -39,5 +48,8 @@ export const resolvers = {
     createOdontology,
     updateOdontology,
     deleteOdontology,
+    createOptometry,
+    updateOptometry,
+    deleteOptometry,
   },
 };

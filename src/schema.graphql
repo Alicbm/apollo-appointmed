@@ -10,6 +10,10 @@ type Query {
   #odontology
   getAllOdontology: [BaseEntity]
   getOneOdontology (id: ID!): BaseEntity
+
+  #optometry
+  getAllOptometry: [BaseEntity]
+  getOneOptometry (id: ID!): BaseEntity
 }
 
 type Mutation {
@@ -27,6 +31,11 @@ type Mutation {
   createOdontology (dto: CreateBaseRequest!): BaseEntity!
   updateOdontology (id: ID!, dto: UpdateBaseRequest!): String 
   deleteOdontology (id: ID!): String
+
+  #optometry
+  createOptometry (dto: CreateBaseRequest!): BaseEntity!
+  updateOptometry (id: ID!, dto: UpdateBaseRequest!): String 
+  deleteOptometry (id: ID!): String
 }
 
 type BaseEntity {
