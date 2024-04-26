@@ -26,6 +26,7 @@ import {
   getOneOptometry,
   updateOptometry,
 } from "./Optometry.resolvers";
+import { createPediatrics, deletePediatrics, getAllPediatrics, getOnePediatrics, updatePediatrics } from "./Pediatrics.resolvers";
 
 export const resolvers = {
   Query: {
@@ -37,6 +38,8 @@ export const resolvers = {
     getOneOdontology,
     getAllOptometry,
     getOneOptometry,
+    getAllPediatrics,
+    getOnePediatrics
   },
   Mutation: {
     createGeneralMedicine,
@@ -51,5 +54,8 @@ export const resolvers = {
     createOptometry,
     updateOptometry,
     deleteOptometry,
+    createPediatrics,
+    updatePediatrics,
+    deletePediatrics
   },
 };
