@@ -1,7 +1,4 @@
 type Query {
-  hello: String
-  getPerson(name: String, age: Int): String
-  
   #general medicine
   getAllGeneralMedicine: [BaseEntity]
   getOneGeneralMedicine (id: ID!): BaseEntity
@@ -9,6 +6,10 @@ type Query {
   #gynecology
   getAllGynecology: [BaseEntity]
   getOneGynecology (id: ID!): BaseEntity
+
+  #odontology
+  getAllOdontology: [BaseEntity]
+  getOneOdontology (id: ID!): BaseEntity
 }
 
 type Mutation {
@@ -21,6 +22,11 @@ type Mutation {
   createGynecology (dto: CreateBaseRequest!): BaseEntity!
   updateGynecology (id: ID!, dto: UpdateBaseRequest!): String 
   deleteGynecology (id: ID!): String
+
+  #gynecology
+  createOdontology (dto: CreateBaseRequest!): BaseEntity!
+  updateOdontology (id: ID!, dto: UpdateBaseRequest!): String 
+  deleteOdontology (id: ID!): String
 }
 
 type BaseEntity {

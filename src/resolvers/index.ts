@@ -12,16 +12,22 @@ import {
   getOneGynecology,
   updateGynecology,
 } from "./Ginecology.resolvers";
+import {
+  createOdontology,
+  deleteOdontology,
+  getAllOdontology,
+  getOneOdontology,
+  updateOdontology,
+} from "./Odontology.resolvers";
 
 export const resolvers = {
   Query: {
-    hello: () => "Hola Campeón",
-    getPerson: (_, { name, age }) =>
-      `Hola ${name}, tienes ${age} años y eres un campeón`,
     getAllGeneralMedicine,
     getOneGeneralMedicine,
     getAllGynecology,
     getOneGynecology,
+    getAllOdontology,
+    getOneOdontology,
   },
   Mutation: {
     createGeneralMedicine,
@@ -30,5 +36,8 @@ export const resolvers = {
     createGynecology,
     updateGynecology,
     deleteGynecology,
+    createOdontology,
+    updateOdontology,
+    deleteOdontology,
   },
 };
