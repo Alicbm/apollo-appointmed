@@ -1,14 +1,22 @@
 import { CreateRequest, findOne, UpdateRequest } from "../../types";
 import { GynecologyEntity } from "../entities/Gynecology.entity";
 import { connectDB } from "../db";
+import { checkJwtGql } from "../utils/auth/checkJwt";
+import { checkRolesGql } from "../utils/auth/checkRoles";
 
 const gynecologySource = connectDB.getRepository(GynecologyEntity);
 
-export const getAllGynecology = async () => {
+export const getAllGynecology = async (_, args, context) => {
+  const user = await checkJwtGql(context)  
+  checkRolesGql(user, 'user', 'admin' )
+
   return await gynecologySource.find();
 };
 
-export const getOneGynecology = async (_, { id }: findOne) => {
+export const getOneGynecology = async (_, { id }: findOne, context) => {
+  const user = await checkJwtGql(context)  
+  checkRolesGql(user, 'user', 'admin' )
+
   return await gynecologySource.findOne({
     where: {
       id,
@@ -16,7 +24,10 @@ export const getOneGynecology = async (_, { id }: findOne) => {
   });
 };
 
-export const createGynecology = async (_, { dto }: CreateRequest) => {
+export const createGynecology = async (_, { dto }: CreateRequest, context) => {
+  const user = await checkJwtGql(context)  
+  checkRolesGql(user, 'user', 'admin' )
+
   const data = await gynecologySource.insert({
     ...dto,
     status: "Estable",
@@ -29,7 +40,10 @@ export const createGynecology = async (_, { dto }: CreateRequest) => {
   };
 };
 
-export const updateGynecology = async (_, { id, dto }: UpdateRequest) => {
+export const updateGynecology = async (_, { id, dto }: UpdateRequest, context) => {
+  const user = await checkJwtGql(context)  
+  checkRolesGql(user, 'admin' )
+
   let findRequest = await gynecologySource.findOne({ where: { id } });
 
   if (!id) {
@@ -49,7 +63,10 @@ export const updateGynecology = async (_, { id, dto }: UpdateRequest) => {
   return "Request not found";
 };
 
-export const deleteGynecology = async (_, { id }: findOne) => {
+export const deleteGynecology = async (_, { id }: findOne, context) => {
+  const user = await checkJwtGql(context)  
+  checkRolesGql(user, 'admin' )
+
   await gynecologySource.delete(id);
   return `Request with id: ${id} deleted succesfully.`;
 };

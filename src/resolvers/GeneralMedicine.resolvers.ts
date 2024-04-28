@@ -8,12 +8,15 @@ const generalMedicineSource = connectDB.getRepository(GeneralMedicineEntity);
 
 export const getAllGeneralMedicine = async (_, args, context) => {
   const user = await checkJwtGql(context)  
-  checkRolesGql(user, 'admin')
+  checkRolesGql(user, 'user', 'admin' )
 
   return await generalMedicineSource.find();
 };
 
-export const getOneGeneralMedicine = async (_, { id }: findOne) => {
+export const getOneGeneralMedicine = async (_, { id }: findOne, context) => {
+  const user = await checkJwtGql(context)  
+  checkRolesGql(user, 'user', 'admin' )
+
   return await generalMedicineSource.findOne({
     where: {
       id,
@@ -21,7 +24,10 @@ export const getOneGeneralMedicine = async (_, { id }: findOne) => {
   });
 };
 
-export const createGeneralMedicine = async (_, { dto }: CreateRequest) => {
+export const createGeneralMedicine = async (_, { dto }: CreateRequest, context) => {
+  const user = await checkJwtGql(context)  
+  checkRolesGql(user, 'user', 'admin' )
+
   const data = await generalMedicineSource.insert({
     ...dto,
     status: "Estable",
@@ -34,7 +40,10 @@ export const createGeneralMedicine = async (_, { dto }: CreateRequest) => {
   };
 };
 
-export const updateGeneralMedicine = async (_, { id, dto }: UpdateRequest) => {
+export const updateGeneralMedicine = async (_, { id, dto }: UpdateRequest, context) => {
+  const user = await checkJwtGql(context)  
+  checkRolesGql(user, 'admin' )
+
   let findRequest = await generalMedicineSource.findOne({ where: { id } });
 
   if (!id) {
@@ -54,7 +63,10 @@ export const updateGeneralMedicine = async (_, { id, dto }: UpdateRequest) => {
   return "Request not found";
 };
 
-export const deleteGeneralMedicine = async (_, { id }: findOne) => {
+export const deleteGeneralMedicine = async (_, { id }: findOne, context) => {
+  const user = await checkJwtGql(context)  
+  checkRolesGql(user, 'admin' )
+
   await generalMedicineSource.delete(id);
   return `Request with id: ${id} deleted succesfully.`;
 };

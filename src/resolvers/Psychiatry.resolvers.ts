@@ -1,14 +1,22 @@
 import { CreateRequest, findOne, UpdateRequest } from "../../types";
 import { PsychiatryEntity } from "../entities/Psychiatry.entity";
 import { connectDB } from "../db";
+import { checkRolesGql } from "../utils/auth/checkRoles";
+import { checkJwtGql } from "../utils/auth/checkJwt";
 
 const psychiatrySource = connectDB.getRepository(PsychiatryEntity);
 
-export const getAllPsychiatry = async () => {
+export const getAllPsychiatry = async (_, args, context) => {
+  const user = await checkJwtGql(context)  
+  checkRolesGql(user, 'user', 'admin' )
+
   return await psychiatrySource.find();
 };
 
-export const getOnePsychiatry = async (_, { id }: findOne) => {
+export const getOnePsychiatry = async (_, { id }: findOne, context) => {
+  const user = await checkJwtGql(context)  
+  checkRolesGql(user, 'user', 'admin' )
+
   return await psychiatrySource.findOne({
     where: {
       id,
@@ -16,7 +24,10 @@ export const getOnePsychiatry = async (_, { id }: findOne) => {
   });
 };
 
-export const createPsychiatry = async (_, { dto }: CreateRequest) => {
+export const createPsychiatry = async (_, { dto }: CreateRequest, context) => {
+  const user = await checkJwtGql(context)  
+  checkRolesGql(user, 'user', 'admin' )
+
   const data = await psychiatrySource.insert({
     ...dto,
     status: "Estable",
@@ -29,7 +40,10 @@ export const createPsychiatry = async (_, { dto }: CreateRequest) => {
   };
 };
 
-export const updatePsychiatry = async (_, { id, dto }: UpdateRequest) => {
+export const updatePsychiatry = async (_, { id, dto }: UpdateRequest, context) => {
+  const user = await checkJwtGql(context)  
+  checkRolesGql(user, 'admin' )
+
   let findRequest = await psychiatrySource.findOne({ where: { id } });
 
   if (!id) {
@@ -49,7 +63,10 @@ export const updatePsychiatry = async (_, { id, dto }: UpdateRequest) => {
   return "Request not found";
 };
 
-export const deletePsychiatry = async (_, { id }: findOne) => {
+export const deletePsychiatry = async (_, { id }: findOne, context) => {
+  const user = await checkJwtGql(context)  
+  checkRolesGql(user, 'admin' )
+
   await psychiatrySource.delete(id);
   return `Request with id: ${id} deleted succesfully.`;
 };
