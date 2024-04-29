@@ -6,14 +6,14 @@ import { checkRolesGql } from "../utils/auth/checkRoles";
 
 const generalMedicineSource = connectDB.getRepository(GeneralMedicineEntity);
 
-export const getAllGeneralMedicine = async (_, args, context) => {
+export const getAllGeneralMedicineRequest = async (_, args, context) => {
   const user = await checkJwtGql(context)  
   checkRolesGql(user, 'user', 'admin' )
 
   return await generalMedicineSource.find();
-};
+};  
 
-export const getOneGeneralMedicine = async (_, { id }: findOne, context) => {
+export const getOneGeneralMedicineRequest = async (_, { id }: findOne, context) => {
   const user = await checkJwtGql(context)  
   checkRolesGql(user, 'user', 'admin' )
 
@@ -24,9 +24,9 @@ export const getOneGeneralMedicine = async (_, { id }: findOne, context) => {
   });
 };
 
-export const createGeneralMedicine = async (_, { dto }: CreateRequest, context) => {
-  const user = await checkJwtGql(context)  
-  checkRolesGql(user, 'user', 'admin' )
+export const createGeneralMedicineRequest = async (_, { dto }: CreateRequest, context) => {
+  // const user = await checkJwtGql(context)  
+  // checkRolesGql(user, 'user', 'admin' )
 
   const data = await generalMedicineSource.insert({
     ...dto,
@@ -40,7 +40,7 @@ export const createGeneralMedicine = async (_, { dto }: CreateRequest, context) 
   };
 };
 
-export const updateGeneralMedicine = async (_, { id, dto }: UpdateRequest, context) => {
+export const updateGeneralMedicineRequest = async (_, { id, dto }: UpdateRequest, context) => {
   const user = await checkJwtGql(context)  
   checkRolesGql(user, 'admin' )
 
@@ -63,7 +63,7 @@ export const updateGeneralMedicine = async (_, { id, dto }: UpdateRequest, conte
   return "Request not found";
 };
 
-export const deleteGeneralMedicine = async (_, { id }: findOne, context) => {
+export const deleteGeneralMedicineRequest = async (_, { id }: findOne, context) => {
   const user = await checkJwtGql(context)  
   checkRolesGql(user, 'admin' )
 

@@ -1,31 +1,31 @@
 type Query {
   #general medicine
-  getAllGeneralMedicine: [BaseEntity]
-  getOneGeneralMedicine (id: ID!): BaseEntity
+  getAllGeneralMedicineRequest: [BaseEntity]
+  getOneGeneralMedicineRequest (id: ID!): BaseEntity
 
   #gynecology
-  getAllGynecology: [BaseEntity]
-  getOneGynecology (id: ID!): BaseEntity
+  getAllGynecologyRequest: [BaseEntity]
+  getOneGynecologyRequest (id: ID!): BaseEntity
 
   #odontology
-  getAllOdontology: [BaseEntity]
-  getOneOdontology (id: ID!): BaseEntity
+  getAllOdontologyRequest: [BaseEntity]
+  getOneOdontologyRequest (id: ID!): BaseEntity
 
   #optometry
-  getAllOptometry: [BaseEntity]
-  getOneOptometry (id: ID!): BaseEntity
+  getAllOptometryRequest: [BaseEntity]
+  getOneOptometryRequest (id: ID!): BaseEntity
 
   #pediactrics
-  getAllPediatrics: [BaseEntity]
-  getOnePediatrics (id: ID!): BaseEntity
+  getAllPediatricsRequest: [BaseEntity]
+  getOnePediatricsRequest (id: ID!): BaseEntity
 
   #psychiatry
-  getAllPsychiatry: [BaseEntity]
-  getOnePsychiatry (id: ID!): BaseEntity
+  getAllPsychiatryRequest: [BaseEntity]
+  getOnePsychiatryRequest (id: ID!): BaseEntity
 
   #user
-  getAllUsers: [UserEntity]
-  getOneUser (id: ID!): UserEntity
+  getAllUsersRequest: [UserEntity]
+  getOneUserRequest (id: ID!): UserEntity
 }
 
 type Mutation {
@@ -33,39 +33,39 @@ type Mutation {
   login (email: String!, password: String!): UserEntityAuth
 
   #general medicine
-  createGeneralMedicine (dto: CreateBaseRequest!): BaseEntity!
-  updateGeneralMedicine (id: ID!, dto: UpdateBaseRequest!): String 
-  deleteGeneralMedicine (id: ID!): String
+  createGeneralMedicineRequest (dto: CreateBaseRequest!): BaseEntity!
+  updateGeneralMedicineRequest (id: ID!, dto: UpdateBaseRequest!): String 
+  deleteGeneralMedicineRequest (id: ID!): String
 
   #gynecology
-  createGynecology (dto: CreateBaseRequest!): BaseEntity!
-  updateGynecology (id: ID!, dto: UpdateBaseRequest!): String 
-  deleteGynecology (id: ID!): String
+  createGynecologyRequest (dto: CreateBaseRequest!): BaseEntity!
+  updateGynecologyRequest (id: ID!, dto: UpdateBaseRequest!): String 
+  deleteGynecologyRequest (id: ID!): String
 
   #gynecology
-  createOdontology (dto: CreateBaseRequest!): BaseEntity!
-  updateOdontology (id: ID!, dto: UpdateBaseRequest!): String 
-  deleteOdontology (id: ID!): String
+  createOdontologyRequest (dto: CreateBaseRequest!): BaseEntity!
+  updateOdontologyRequest (id: ID!, dto: UpdateBaseRequest!): String 
+  deleteOdontologyRequest (id: ID!): String
 
   #optometry
-  createOptometry (dto: CreateBaseRequest!): BaseEntity!
-  updateOptometry (id: ID!, dto: UpdateBaseRequest!): String 
-  deleteOptometry (id: ID!): String
+  createOptometryRequest (dto: CreateBaseRequest!): BaseEntity!
+  updateOptometryRequest (id: ID!, dto: UpdateBaseRequest!): String 
+  deleteOptometryRequest (id: ID!): String
 
   #pediatrics
-  createPediatrics (dto: CreateBaseRequest!): BaseEntity!
-  updatePediatrics (id: ID!, dto: UpdateBaseRequest!): String 
-  deletePediatrics (id: ID!): String
+  createPediatricsRequest (dto: CreateBaseRequest!): BaseEntity!
+  updatePediatricsRequest (id: ID!, dto: UpdateBaseRequest!): String 
+  deletePediatricsRequest (id: ID!): String
 
   #psychiatry
-  createPsychiatry (dto: CreateBaseRequest!): BaseEntity!
-  updatePsychiatry (id: ID!, dto: UpdateBaseRequest!): String 
-  deletePsychiatry (id: ID!): String
+  createPsychiatryRequest (dto: CreateBaseRequest!): BaseEntity!
+  updatePsychiatryRequest (id: ID!, dto: UpdateBaseRequest!): String 
+  deletePsychiatryRequest (id: ID!): String
 
   #user
-  createUsers (dto: CreateUserRequest!): UserEntity!
-  updateUsers (id: ID!, dto: UpdateUserRequest!): String 
-  deleteUsers (id: ID!): String
+  createUsersRequest (dto: CreateUserRequest!): UserEntity!
+  updateUsersRequest (id: ID!, dto: UpdateUserRequest!): String 
+  deleteUsersRequest (id: ID!): String
 }
 
 type BaseEntity {

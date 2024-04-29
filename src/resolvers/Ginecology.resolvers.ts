@@ -6,14 +6,14 @@ import { checkRolesGql } from "../utils/auth/checkRoles";
 
 const gynecologySource = connectDB.getRepository(GynecologyEntity);
 
-export const getAllGynecology = async (_, args, context) => {
+export const getAllGynecologyRequest = async (_, args, context) => {
   const user = await checkJwtGql(context)  
   checkRolesGql(user, 'user', 'admin' )
 
   return await gynecologySource.find();
 };
 
-export const getOneGynecology = async (_, { id }: findOne, context) => {
+export const getOneGynecologyRequest = async (_, { id }: findOne, context) => {
   const user = await checkJwtGql(context)  
   checkRolesGql(user, 'user', 'admin' )
 
@@ -24,7 +24,7 @@ export const getOneGynecology = async (_, { id }: findOne, context) => {
   });
 };
 
-export const createGynecology = async (_, { dto }: CreateRequest, context) => {
+export const createGynecologyRequest = async (_, { dto }: CreateRequest, context) => {
   const user = await checkJwtGql(context)  
   checkRolesGql(user, 'user', 'admin' )
 
@@ -40,7 +40,7 @@ export const createGynecology = async (_, { dto }: CreateRequest, context) => {
   };
 };
 
-export const updateGynecology = async (_, { id, dto }: UpdateRequest, context) => {
+export const updateGynecologyRequest = async (_, { id, dto }: UpdateRequest, context) => {
   const user = await checkJwtGql(context)  
   checkRolesGql(user, 'admin' )
 
@@ -63,7 +63,7 @@ export const updateGynecology = async (_, { id, dto }: UpdateRequest, context) =
   return "Request not found";
 };
 
-export const deleteGynecology = async (_, { id }: findOne, context) => {
+export const deleteGynecologyRequest = async (_, { id }: findOne, context) => {
   const user = await checkJwtGql(context)  
   checkRolesGql(user, 'admin' )
 

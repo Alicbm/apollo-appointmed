@@ -4,6 +4,7 @@ import { ApolloServer } from "@apollo/server"
 import { resolvers }  from "./resolvers"
 import { loadFiles } from '@graphql-tools/load-files'
 import { connectDB } from "./db"
+import cors from 'cors'
 import "reflect-metadata"
 import './utils/auth'
 
@@ -12,14 +13,16 @@ const express = require('express')
 const app = express()
 app.use(express.json());
 
-
 (async () => {
   const server = new ApolloServer({
     typeDefs: await loadFiles('./src/**/*.graphql'),
     resolvers,
   });
-
+  
   connectDB
+  
+  app.use(cors())
+
   await server.start();
   
   app.use(

@@ -6,14 +6,14 @@ import { checkJwtGql } from "../utils/auth/checkJwt";
 
 const optometrySource = connectDB.getRepository(OptometryEntity);
 
-export const getAllOptometry = async (_, args, context) => {
+export const getAllOptometryRequest = async (_, args, context) => {
   const user = await checkJwtGql(context)  
   checkRolesGql(user, 'user', 'admin' )
 
   return await optometrySource.find();
 };
 
-export const getOneOptometry = async (_, { id }: findOne, context) => {
+export const getOneOptometryRequest = async (_, { id }: findOne, context) => {
   const user = await checkJwtGql(context)  
   checkRolesGql(user, 'user', 'admin' )
 
@@ -24,7 +24,7 @@ export const getOneOptometry = async (_, { id }: findOne, context) => {
   });
 };
 
-export const createOptometry = async (_, { dto }: CreateRequest, context) => {
+export const createOptometryRequest = async (_, { dto }: CreateRequest, context) => {
   const user = await checkJwtGql(context)  
   checkRolesGql(user, 'user', 'admin' )
 
@@ -40,7 +40,7 @@ export const createOptometry = async (_, { dto }: CreateRequest, context) => {
   };
 };
 
-export const updateOptometry = async (_, { id, dto }: UpdateRequest, context) => {
+export const updateOptometryRequest = async (_, { id, dto }: UpdateRequest, context) => {
   const user = await checkJwtGql(context)  
   checkRolesGql(user, 'admin' )
 
@@ -63,7 +63,7 @@ export const updateOptometry = async (_, { id, dto }: UpdateRequest, context) =>
   return "Request not found";
 };
 
-export const deleteOptometry = async (_, { id }: findOne, context) => {
+export const deleteOptometryRequest = async (_, { id }: findOne, context) => {
   const user = await checkJwtGql(context)  
   checkRolesGql(user, 'admin' )
 

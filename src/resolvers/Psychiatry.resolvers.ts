@@ -6,14 +6,14 @@ import { checkJwtGql } from "../utils/auth/checkJwt";
 
 const psychiatrySource = connectDB.getRepository(PsychiatryEntity);
 
-export const getAllPsychiatry = async (_, args, context) => {
+export const getAllPsychiatryRequest = async (_, args, context) => {
   const user = await checkJwtGql(context)  
   checkRolesGql(user, 'user', 'admin' )
 
   return await psychiatrySource.find();
 };
 
-export const getOnePsychiatry = async (_, { id }: findOne, context) => {
+export const getOnePsychiatryRequest = async (_, { id }: findOne, context) => {
   const user = await checkJwtGql(context)  
   checkRolesGql(user, 'user', 'admin' )
 
@@ -24,7 +24,7 @@ export const getOnePsychiatry = async (_, { id }: findOne, context) => {
   });
 };
 
-export const createPsychiatry = async (_, { dto }: CreateRequest, context) => {
+export const createPsychiatryRequest = async (_, { dto }: CreateRequest, context) => {
   const user = await checkJwtGql(context)  
   checkRolesGql(user, 'user', 'admin' )
 
@@ -40,7 +40,7 @@ export const createPsychiatry = async (_, { dto }: CreateRequest, context) => {
   };
 };
 
-export const updatePsychiatry = async (_, { id, dto }: UpdateRequest, context) => {
+export const updatePsychiatryRequest = async (_, { id, dto }: UpdateRequest, context) => {
   const user = await checkJwtGql(context)  
   checkRolesGql(user, 'admin' )
 
@@ -63,7 +63,7 @@ export const updatePsychiatry = async (_, { id, dto }: UpdateRequest, context) =
   return "Request not found";
 };
 
-export const deletePsychiatry = async (_, { id }: findOne, context) => {
+export const deletePsychiatryRequest = async (_, { id }: findOne, context) => {
   const user = await checkJwtGql(context)  
   checkRolesGql(user, 'admin' )
 

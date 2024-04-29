@@ -35,6 +35,7 @@ type CreateBaseDto = {
   hour: string,
   doctor: string,
   patientStatus: string,
+  status?: string,
 }
 
 type UpdateBaseDto = {

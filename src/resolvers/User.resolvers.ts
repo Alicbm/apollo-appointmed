@@ -5,11 +5,11 @@ import { connectDB } from "../db";
 
 const userSource = connectDB.getRepository(UserEntity);
 
-export const getAllUsers = async () => {
+export const getAllUsersRequest = async () => {
   return await userSource.find();
 };
 
-export const getOneUser = async (_, { id }: findOne) => {
+export const getOneUserRequest = async (_, { id }: findOne) => {
   return await userSource.findOne({
     where: {
       id,
@@ -17,7 +17,7 @@ export const getOneUser = async (_, { id }: findOne) => {
   });
 };
 
-export const createUsers = async (_, { dto }: CreateUserRequest) => {
+export const createUsersRequest = async (_, { dto }: CreateUserRequest) => {
   const hash = await bcrypt.hash(dto.password, 10);
   
   const data = await userSource.insert({
@@ -31,7 +31,7 @@ export const createUsers = async (_, { dto }: CreateUserRequest) => {
   };
 };
 
-export const updateUsers = async (_, { id, dto }: UpdateUserRequest) => {
+export const updateUsersRequest = async (_, { id, dto }: UpdateUserRequest) => {
   let findRequest = await userSource.findOne({ where: { id } });
 
   if (!id) {
@@ -51,7 +51,7 @@ export const updateUsers = async (_, { id, dto }: UpdateUserRequest) => {
   return "Request not found";
 };
 
-export const deleteUsers = async (_, { id }: findOne) => {
+export const deleteUsersRequest = async (_, { id }: findOne) => {
   await userSource.delete(id);
   return `Request with id: ${id} deleted succesfully.`;
 };
