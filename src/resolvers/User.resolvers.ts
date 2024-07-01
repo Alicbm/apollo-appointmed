@@ -2,6 +2,7 @@ import bcrypt from 'bcrypt'
 import { CreateUserRequest, findOne, UpdateUserRequest } from "../../types";
 import { UserEntity } from "../entities/User.entity";
 import { connectDB } from "../db";
+import { signToken } from './Auth.resolvers';
 
 const userSource = connectDB.getRepository(UserEntity);
 
@@ -24,10 +25,17 @@ export const createUsersRequest = async (_, { dto }: CreateUserRequest) => {
     ...dto,
     password: hash
   });
-
-  return {
+  
+  const user = {
     id: data.identifiers[0].id,
     ...dto
+  }
+
+  const { access_token } = signToken(user);
+
+  return {
+    user,
+    access_token
   };
 };
 

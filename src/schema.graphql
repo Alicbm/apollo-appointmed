@@ -63,7 +63,7 @@ type Mutation {
   deletePsychiatryRequest (id: ID!): String
 
   #user
-  createUsersRequest (dto: CreateUserRequest!): UserEntity!
+  createUsersRequest (dto: CreateUserRequest!): UserEntityAuth!
   updateUsersRequest (id: ID!, dto: UpdateUserRequest!): String 
   deleteUsersRequest (id: ID!): String
 }
@@ -88,11 +88,13 @@ type BaseEntity {
 
 type UserEntity {
   id: ID!,
-  name: String!,
+  firstName: String!,
+  lastName: String!,
   email: String!,
   password: String!,
   createdAt: String!,
   role: String!,
+  eps: String!,
 }
 
 type UserEntityAuth { 
@@ -135,17 +137,21 @@ input UpdateBaseRequest {
 }
 
 input CreateUserRequest {
-  name: String!,
+  firstName: String!,
+  lastName: String!,
   email: String!,
   password: String!,
   createdAt: String!,
   role: String!,
+  eps: String!,
 }
 
 input UpdateUserRequest {
-  name: String,
+  firstName: String,
+  lastName: String,
   email: String,
   password: String,
   createdAt: String,
   role: String,
+  eps: String,
 }

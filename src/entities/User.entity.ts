@@ -1,12 +1,15 @@
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 
-@Entity({ name: "USER", synchronize: false })
+@Entity({ name: "USER", synchronize: true })
 export class UserEntity {
   @PrimaryGeneratedColumn()
   id: string;
 
   @Column()
-  name: string;
+  firstName: string;
+
+  @Column()
+  lastName: string;
 
   @Column()
   email: string;
@@ -15,9 +18,11 @@ export class UserEntity {
   password: string;
 
   @Column()
-  createdAt: string;
-
-  @Column()
   role: string;
 
+  @Column()
+  eps: string;
+
+  @Column()
+  createdAt: string;
 }

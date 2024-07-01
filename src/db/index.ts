@@ -9,11 +9,11 @@ import { UserEntity } from "../entities/User.entity";
 
 export const connectDB = new DataSource({
   type: "mysql",
-  host: "localhost",
-  port: 3307,
-  username: "root",
-  password: "admin",
-  database: "appointmed",
+  host: "b96iqowc5ckf0tpgwxjj-mysql.services.clever-cloud.com",
+  port: 3306,
+  username: "ukjf9klq6pue1khz",
+  password: "Wojms7Lq3356z5yUStfG",
+  database: "b96iqowc5ckf0tpgwxjj",
   synchronize: true,
   entities: [
     GeneralMedicineEntity,
@@ -29,6 +29,8 @@ export const connectDB = new DataSource({
   // migrations: [],
 });
 
+//clever cloud
+
 connectDB
   .initialize()
   .then(() => {
@@ -37,3 +39,12 @@ connectDB
   .catch((err) => {
     console.log("There are problems with the DB: ", err);
   });
+
+
+  // type: "mysql",
+  // host: "localhost",
+  // port: 3307,
+  // username: "root",
+  // password: "admin",
+  // database: "appointmed",
+  // synchronize: true,

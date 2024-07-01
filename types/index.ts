@@ -55,17 +55,21 @@ type UpdateBaseDto = {
 }
 
 type CreateUserDto = {
-  name: string,
+  firstName: string,
+  lastName: string,
   email: string,
   password: string,
   createdAt: string,
   role: string,
+  eps: string,
 }
 
 type UpdateUserDto = {
-  name?: string,
+  firstName?: string,
+  lastName?: string,
   email?: string,
   password?: string,
   createdAt?: string,
   role?: string,
+  eps?: string,
 }

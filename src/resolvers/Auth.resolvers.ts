@@ -26,7 +26,7 @@ export const getUserAuth = async (email: string, password: string) => {
   return user;
 }
 
-const signToken = (user: UserEntity) => {
+export const signToken = (user: UserEntity) => {
   const payload = {
     sub: user.id,
     role: user.role
