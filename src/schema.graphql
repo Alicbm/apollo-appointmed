@@ -42,7 +42,7 @@ type Mutation {
   updateGynecologyRequest (id: ID!, dto: UpdateBaseRequest!): String 
   deleteGynecologyRequest (id: ID!): String
 
-  #gynecology
+  #odontology
   createOdontologyRequest (dto: CreateBaseRequest!): BaseEntity!
   updateOdontologyRequest (id: ID!, dto: UpdateBaseRequest!): String 
   deleteOdontologyRequest (id: ID!): String
@@ -151,7 +151,5 @@ input UpdateUserRequest {
   lastName: String,
   email: String,
   password: String,
-  createdAt: String,
-  role: String,
   eps: String,
 }

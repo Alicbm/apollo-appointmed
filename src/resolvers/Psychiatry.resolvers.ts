@@ -42,7 +42,7 @@ export const createPsychiatryRequest = async (_, { dto }: CreateRequest, context
 
 export const updatePsychiatryRequest = async (_, { id, dto }: UpdateRequest, context) => {
   const user = await checkJwtGql(context)  
-  checkRolesGql(user, 'admin' )
+  checkRolesGql(user, 'user', 'admin' )
 
   let findRequest = await psychiatrySource.findOne({ where: { id } });
 
@@ -65,7 +65,7 @@ export const updatePsychiatryRequest = async (_, { id, dto }: UpdateRequest, con
 
 export const deletePsychiatryRequest = async (_, { id }: findOne, context) => {
   const user = await checkJwtGql(context)  
-  checkRolesGql(user, 'admin' )
+  checkRolesGql(user, 'user', 'admin' )
 
   await psychiatrySource.delete(id);
   return `Request with id: ${id} deleted succesfully.`;

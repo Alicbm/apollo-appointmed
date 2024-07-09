@@ -42,7 +42,7 @@ export const createOdontologyRequest = async (_, { dto }: CreateRequest, context
 
 export const updateOdontologyRequest = async (_, { id, dto }: UpdateRequest, context) => {
   const user = await checkJwtGql(context)  
-  checkRolesGql(user, 'admin' )
+  checkRolesGql(user, 'user', 'admin' )
 
   let findRequest = await odontologySource.findOne({ where: { id } });
 
@@ -65,7 +65,7 @@ export const updateOdontologyRequest = async (_, { id, dto }: UpdateRequest, con
 
 export const deleteOdontologyRequest = async (_, { id }: findOne, context) => {
   const user = await checkJwtGql(context)  
-  checkRolesGql(user, 'admin' )
+  checkRolesGql(user, 'user', 'admin' )
 
   await odontologySource.delete(id);
   return `Request with id: ${id} deleted succesfully.`;

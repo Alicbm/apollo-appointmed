@@ -1,3 +1,4 @@
+import dotenv from 'dotenv';
 import { DataSource } from "typeorm";
 import { GeneralMedicineEntity } from "../entities/GeneralMedicine.entity";
 import { GynecologyEntity } from "../entities/Gynecology.entity";
@@ -7,13 +8,21 @@ import { PediatricsEntity } from "../entities/Pediatrics.entity";
 import { PsychiatryEntity } from "../entities/Psychiatry.entity";
 import { UserEntity } from "../entities/User.entity";
 
+dotenv.config();
+
+const host = process.env.MYSQL_ADDON_HOST;
+const port = process.env.MYSQL_ADDON_PORT;
+const username = process.env.MYSQL_ADDON_USER;
+const password = process.env.MYSQL_ADDON_PASSWORD;
+const database = process.env.MYSQL_ADDON_DB;
+
 export const connectDB = new DataSource({
   type: "mysql",
-  host: "b96iqowc5ckf0tpgwxjj-mysql.services.clever-cloud.com",
-  port: 3306,
-  username: "ukjf9klq6pue1khz",
-  password: "Wojms7Lq3356z5yUStfG",
-  database: "b96iqowc5ckf0tpgwxjj",
+  host,
+  port: Number(port),
+  username,
+  password,
+  database,
   synchronize: true,
   entities: [
     GeneralMedicineEntity,
@@ -24,12 +33,7 @@ export const connectDB = new DataSource({
     PsychiatryEntity,
     UserEntity
   ],
-  // logging: true,
-  // subscribers: [],
-  // migrations: [],
 });
-
-//clever cloud
 
 connectDB
   .initialize()
@@ -39,12 +43,3 @@ connectDB
   .catch((err) => {
     console.log("There are problems with the DB: ", err);
   });
-
-
-  // type: "mysql",
-  // host: "localhost",
-  // port: 3307,
-  // username: "root",
-  // password: "admin",
-  // database: "appointmed",
-  // synchronize: true,

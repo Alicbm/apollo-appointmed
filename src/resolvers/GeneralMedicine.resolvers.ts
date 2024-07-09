@@ -25,8 +25,8 @@ export const getOneGeneralMedicineRequest = async (_, { id }: findOne, context) 
 };
 
 export const createGeneralMedicineRequest = async (_, { dto }: CreateRequest, context) => {
-  // const user = await checkJwtGql(context)  
-  // checkRolesGql(user, 'user', 'admin' )
+  const user = await checkJwtGql(context)  
+  checkRolesGql(user, 'user', 'admin' )
 
   const data = await generalMedicineSource.insert({
     ...dto,
@@ -42,7 +42,7 @@ export const createGeneralMedicineRequest = async (_, { dto }: CreateRequest, co
 
 export const updateGeneralMedicineRequest = async (_, { id, dto }: UpdateRequest, context) => {
   const user = await checkJwtGql(context)  
-  checkRolesGql(user, 'admin' )
+  checkRolesGql(user, 'user', 'admin' )
 
   let findRequest = await generalMedicineSource.findOne({ where: { id } });
 
@@ -60,12 +60,12 @@ export const updateGeneralMedicineRequest = async (_, { id, dto }: UpdateRequest
     return "Your request update was succesfully";
   }
 
-  return "Request not found";
+  return { message: "Request not found" };
 };
 
 export const deleteGeneralMedicineRequest = async (_, { id }: findOne, context) => {
   const user = await checkJwtGql(context)  
-  checkRolesGql(user, 'admin' )
+  checkRolesGql(user, 'user', 'admin' )
 
   await generalMedicineSource.delete(id);
   return `Request with id: ${id} deleted succesfully.`;

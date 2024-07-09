@@ -69,7 +69,5 @@ type UpdateUserDto = {
   lastName?: string,
   email?: string,
   password?: string,
-  createdAt?: string,
-  role?: string,
   eps?: string,
 }

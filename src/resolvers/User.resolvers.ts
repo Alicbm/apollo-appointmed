@@ -41,16 +41,25 @@ export const createUsersRequest = async (_, { dto }: CreateUserRequest) => {
 
 export const updateUsersRequest = async (_, { id, dto }: UpdateUserRequest) => {
   let findRequest = await userSource.findOne({ where: { id } });
+  const hash = await bcrypt.hash(dto.password, 10);
 
   if (!id) {
     return "Id is required";
   }
 
   if (findRequest) {
-    findRequest = {
-      ...findRequest,
-      ...dto,
-    };
+    if(dto?.password) {
+      findRequest = {
+        ...findRequest,
+        ...dto,
+        password: hash
+      }      
+    } else {
+      findRequest = {
+        ...findRequest,
+        ...dto,
+      };
+    }
 
     await userSource.save(findRequest);
     return "Your request update was succesfully";

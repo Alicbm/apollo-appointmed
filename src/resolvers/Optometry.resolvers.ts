@@ -42,7 +42,7 @@ export const createOptometryRequest = async (_, { dto }: CreateRequest, context)
 
 export const updateOptometryRequest = async (_, { id, dto }: UpdateRequest, context) => {
   const user = await checkJwtGql(context)  
-  checkRolesGql(user, 'admin' )
+  checkRolesGql(user, 'user', 'admin' )
 
   let findRequest = await optometrySource.findOne({ where: { id } });
 
@@ -65,7 +65,7 @@ export const updateOptometryRequest = async (_, { id, dto }: UpdateRequest, cont
 
 export const deleteOptometryRequest = async (_, { id }: findOne, context) => {
   const user = await checkJwtGql(context)  
-  checkRolesGql(user, 'admin' )
+  checkRolesGql(user, 'user', 'admin' )
 
   await optometrySource.delete(id);
   return `Request with id: ${id} deleted succesfully.`;

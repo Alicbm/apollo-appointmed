@@ -42,7 +42,7 @@ export const createGynecologyRequest = async (_, { dto }: CreateRequest, context
 
 export const updateGynecologyRequest = async (_, { id, dto }: UpdateRequest, context) => {
   const user = await checkJwtGql(context)  
-  checkRolesGql(user, 'admin' )
+  checkRolesGql(user, 'user', 'admin' )
 
   let findRequest = await gynecologySource.findOne({ where: { id } });
 
@@ -65,7 +65,7 @@ export const updateGynecologyRequest = async (_, { id, dto }: UpdateRequest, con
 
 export const deleteGynecologyRequest = async (_, { id }: findOne, context) => {
   const user = await checkJwtGql(context)  
-  checkRolesGql(user, 'admin' )
+  checkRolesGql(user, 'user', 'admin' )
 
   await gynecologySource.delete(id);
   return `Request with id: ${id} deleted succesfully.`;
