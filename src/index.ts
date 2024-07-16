@@ -23,7 +23,9 @@ app.use(express.json());
   
   app.use(cors({
     origin: 'https://appointmed.vercel.app/',
-    credentials: true
+    credentials: true,
+    methods: ['POST'],
+    allowedHeaders: ['Content-Type'],
   }))
 
   await server.start();
