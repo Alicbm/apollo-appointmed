@@ -21,7 +21,10 @@ app.use(express.json());
   
   connectDB
   
-  app.use(cors())
+  app.use(cors({
+    origin: 'https://appointmed.vercel.app/',
+    credentials: true
+  }))
 
   await server.start();
   
